@@ -10,9 +10,3 @@ class Kelas extends Model
     use HasFactory;
 }
 
-
-class User extends Authenticatable
-{
-    use HasFactory, Notifiable, HasApiTokens;
-
-}
