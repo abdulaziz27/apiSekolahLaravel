@@ -35,7 +35,7 @@ class MuridController extends Controller
         
         // %A A% %A%
         
-        return $data->paginate(10);
+        return $data;
     }
 
     /**
