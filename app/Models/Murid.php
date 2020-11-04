@@ -9,4 +9,9 @@ class Murid extends Model
 {
     protected $primaryKey = 'nisn';
     use HasFactory;
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

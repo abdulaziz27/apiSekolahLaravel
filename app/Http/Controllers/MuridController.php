@@ -14,9 +14,28 @@ class MuridController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Murid::all();
+        $data = Murid::select("*");
+        // $kelas = Kelas::all();
+
+        if ($request->keyword) {
+            $query  = $request->keyword;
+            $data->where(function ($q) use ($query) {
+               $q->orWhere("name", "LIKE", "%{$query}%")
+                 ->orWhere("email", "LIKE", "%{$query}%")
+                 ->orWhere("phone_number", "LIKE", "%{$query}%")
+                 ->orWhere("address", "LIKE", "%{$query}%");
+            });
+        } 
+        if ($request->gender) {
+            $query  = $request->gender;
+            $data->where("gender", $query);
+        }
+        
+        // %A A% %A%
+        
+        return $data->paginate(10);
     }
 
     /**

@@ -21,14 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', [UserController::class, 'login'])->name('login');
-Route::post('register', [UserController::class, 'register']);
+// Route::post('login', [UserController::class, 'login'])->name('login');
+// Route::post('register', [UserController::class, 'register']);
 
-Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('user/detail', [UserController::class, 'details']);
-    Route::post('logout', [UserController::class, 'logout']);
-    Route::resource('/murid', MuridController::class);
-});
+// Route::group(['middleware' => ['auth:api']], function () {
+//     Route::get('user/detail', [UserController::class, 'details']);
+//     Route::post('logout', [UserController::class, 'logout']);
+// });
+Route::resource('/murid', MuridController::class);
 
 
 

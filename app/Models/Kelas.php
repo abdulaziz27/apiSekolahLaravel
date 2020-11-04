@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     use HasFactory;
+
+    public function murid()
+    {
+        return $this->hasMany(Murid::class);
+    }
 }
 
